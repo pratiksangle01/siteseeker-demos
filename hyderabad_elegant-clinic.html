@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elegant Clinic — Dental Clinic</title>
+<meta name="description" content="Trusted dental care at Elegant Clinic. Family dentistry in Hyderabad. Book your appointment online.">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#0077b6; --light-blue:#90e0ef; --white:#fff; --bg:#f0f8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Nunito',sans-serif; background:var(--bg); }
+  header { background:var(--blue); color:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+  header h1 { font-size:1.6rem; font-weight:800; }
+  nav a { color:#fff; text-decoration:none; margin-left:1.5rem; font-weight:600; }
+  .hero { background:linear-gradient(135deg,#0077b6,#00b4d8); color:#fff; padding:80px 2rem; text-align:center; }
+  .hero h2 { font-size:2.8rem; font-weight:800; margin-bottom:1rem; }
+  .hero p { font-size:1.1rem; opacity:.9; margin-bottom:2rem; }
+  .cta-btn { background:#fff; color:var(--blue); padding:14px 40px; border-radius:50px; font-weight:800; text-decoration:none; font-size:1rem; display:inline-block; }
+  .services { max-width:1100px; margin:4rem auto; padding:0 2rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; }
+  .card { background:#fff; border-radius:16px; padding:2rem; box-shadow:0 4px 15px rgba(0,119,182,.1); }
+  .card h3 { color:var(--blue); margin-bottom:.5rem; font-weight:700; }
+  .card .icon { font-size:2.5rem; margin-bottom:1rem; }
+  .trust { background:#fff; text-align:center; padding:3rem 2rem; }
+  .trust-badges { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; margin-top:2rem; }
+  .trust-badge { font-size:1.4rem; font-weight:700; color:var(--blue); }
+  .contact { background:var(--blue); color:#fff; text-align:center; padding:4rem 2rem; }
+  .contact h2 { font-size:2rem; margin-bottom:2rem; }
+  .contact-info { font-size:1.1rem; line-height:2.2; }
+  .book-btn { background:#fff; color:var(--blue); padding:12px 32px; border-radius:50px; text-decoration:none; font-weight:800; margin-top:2rem; display:inline-block; }
+  footer { text-align:center; padding:1rem; background:#023e8a; color:#90e0ef; font-size:.85rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🦷 Elegant Clinic</h1>
+  <nav><a href="#services">Services</a><a href="#contact">Contact</a><a href="#book">Book</a></nav>
+</header>
+<section class="hero">
+  <h2>Smile with Confidence<br>in Hyderabad</h2>
+  <p>Family & cosmetic dentistry — gentle, modern, affordable care</p>
+  <a href="#contact" class="cta-btn" id="book">📅 Book Appointment</a>
+</section>
+<div class="trust">
+  <h2>Why Patients Trust Elegant Clinic</h2>
+  <div class="trust-badges">
+    <div class="trust-badge">⭐ 3.4<br><small>Rating</small></div>
+    <div class="trust-badge">42+<br><small>Reviews</small></div>
+    <div class="trust-badge">🏥<br><small>Modern Clinic</small></div>
+    <div class="trust-badge">💳<br><small>EMI Available</small></div>
+  </div>
+</div>
+<section class="services">
+  <div class="card"><div class="icon">🦷</div><h3>General Dentistry</h3><p>Checkups, cleanings, fillings and routine dental care for the whole family</p></div>
+  <div class="card"><div class="icon">✨</div><h3>Cosmetic Dentistry</h3><p>Teeth whitening, veneers and smile makeovers</p></div>
+  <div class="card"><div class="icon">🔧</div><h3>Orthodontics</h3><p>Braces and clear aligners for perfectly aligned teeth</p></div>
+  <div class="card"><div class="icon">🚨</div><h3>Emergency Care</h3><p>Same-day appointments for dental emergencies</p></div>
+</section>
+<section class="contact" id="contact">
+  <h2>Visit Our Clinic</h2>
+  <div class="contact-info">
+    <div>📍 463 Hinjewadi, Hyderabad</div>
+    <div>📞 +91 8178052638</div>
+  </div>
+  <a href="https://wa.me/918178052638" class="book-btn">💬 WhatsApp for Appointment</a>
+</section>
+<footer>© 2025 Elegant Clinic · Hyderabad · Demo by SiteSeeker</footer>
+</body>
+</html>
