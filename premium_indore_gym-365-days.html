@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GYM @ 365 DAYS | Indore — Fitness Centre</title>
+<meta name="description" content="Your Trusted Fitness Centre in Indore. Premium fitness centre services in Indore. 4.8 star rated with 552 happy customers. Book your free consultation today!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+        --primary: #15803d;
+        --secondary: #052e16;
+        --accent: #4ade80;
+        --bg-light: #f0fdf4;
+        --bg-dark: #052e16;
+        --text-dark: #0f172a;
+        --text-light: #f0fdf4;
+        --gradient: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #f0fdf4 100%);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: var(--text-dark);
+        background: var(--bg-light);
+        line-height: 1.7;
+        overflow-x: hidden;
+    }
+    h1,h2,h3,h4 { font-weight: 800; line-height: 1.2; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-left { opacity: 0; transform: translateX(-60px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(60px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.85); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* Glass navbar */
+    .navbar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.4s ease;
+    }
+    .navbar.scrolled {
+        background: rgba(255,255,255,0.85);
+        box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+    .nav-inner {
+        max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.3s; opacity: 0.8; }
+    .nav-links a:hover { color: var(--primary); opacity: 1; }
+    .nav-cta { background: var(--primary); color: white !important; padding: 0.5rem 1.5rem; border-radius: 9999px; opacity: 1 !important; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+
+    /* Buttons */
+    .btn {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        padding: 1rem 2.5rem; border-radius: 9999px; font-weight: 700;
+        text-decoration: none; border: none; cursor: pointer; font-size: 1rem;
+        transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+        white-space: nowrap;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 35px rgba(0,0,0,0.25); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2.5px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+    .btn-white { background: white; color: var(--primary); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+    .btn-white:hover { transform: translateY(-3px) scale(1.02); }
+
+    /* Floating buttons */
+    .floating-btns {
+        position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+        display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .float-btn {
+        display: flex; align-items: center; gap: 0.75rem;
+        padding: 0.85rem 1.5rem; border-radius: 9999px; font-weight: 700;
+        font-size: 0.95rem; text-decoration: none; box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        animation: float-bounce 3s ease-in-out infinite;
+        transition: transform 0.3s;
+    }
+    .float-btn:hover { transform: scale(1.08); }
+    .float-whatsapp { background: #25D366; color: white; animation-delay: 0s; }
+    .float-call { background: var(--primary); color: white; animation-delay: 0.5s; }
+    @keyframes float-bounce {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+    }
+
+    /* Sections */
+    .section { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.1em; color: var(--primary); margin-bottom: 1rem;
+        background: color-mix(in srgb, var(--primary) 12%, white);
+        padding: 0.4rem 1rem; border-radius: 9999px;
+    }
+    .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--text-dark); margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.1rem; color: #64748b; max-width: 600px; }
+
+    /* Cards */
+    .card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #f1f5f9; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+
+    /* Grid layouts */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+
+    /* FAQ accordion */
+    .faq-item { background: white; border-radius: 12px; margin-bottom: 0.75rem; border: 1px solid #e2e8f0; overflow: hidden; }
+    .faq-q { padding: 1.25rem 1.5rem; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; color: var(--text-dark); background: white; border: none; width: 100%; text-align: left; transition: background 0.3s; }
+    .faq-q:hover { background: var(--bg-light); }
+    .faq-a { padding: 0 1.5rem 1.25rem; color: #64748b; line-height: 1.8; display: none; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform 0.3s; display: inline-block; font-size: 1.2rem; color: var(--primary); }
+
+    /* Testimonials */
+    .testimonial-card { background: white; border-radius: 20px; padding: 2rem; border: 1px solid #f1f5f9; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .stars { color: #f59e0b; font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .testimonial-text { font-style: italic; color: #475569; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
+    .testimonial-author { font-weight: 700; color: var(--text-dark); font-size: 0.9rem; }
+
+    /* Trust badges */
+    .trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    .trust-badge { background: color-mix(in srgb, var(--accent) 20%, white); color: var(--secondary); padding: 0.5rem 1.25rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 700; border: 1px solid color-mix(in srgb, var(--accent) 40%, white); }
+
+    /* Footer */
+    footer { background: var(--bg-dark); color: #94a3b8; padding: 4rem 2rem 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo { font-size: 1.5rem; font-weight: 800; color: white; margin-bottom: 1rem; }
+    .footer-desc { color: #64748b; line-height: 1.8; }
+    .footer-title { color: white; font-weight: 700; margin-bottom: 1rem; font-size: 1rem; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.5rem; }
+    .footer-links a { color: #64748b; text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid #1e293b; padding-top: 2rem; text-align: center; font-size: 0.85rem; color: #475569; }
+    .social-links { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .social-link { width: 40px; height: 40px; background: #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94a3b8; text-decoration: none; transition: all 0.3s; font-size: 1rem; }
+    .social-link:hover { background: var(--primary); color: white; }
+
+    /* Animated counters */
+    .counter { font-size: 2.5rem; font-weight: 900; color: var(--primary); }
+    .counter-label { color: #64748b; font-size: 0.9rem; font-weight: 600; }
+
+    /* Map section */
+    .map-container { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+    .map-container iframe { width: 100%; height: 350px; border: none; }
+
+    /* Contact form */
+    .contact-form { background: white; border-radius: 24px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 1px solid #f1f5f9; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-weight: 600; font-size: 0.85rem; color: #374151; margin-bottom: 0.4rem; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.85rem 1.25rem; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s, box-shadow 0.3s; background: #f8fafc; color: var(--text-dark); }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 15%, transparent); background: white; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    /* Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+    .gallery-item { border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--bg-light), var(--bg-light)); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--primary); opacity: 0.6; transition: all 0.3s; }
+    .gallery-item:hover { opacity: 1; transform: scale(1.03); }
+
+    /* Pricing */
+    .pricing-card { background: white; border-radius: 24px; padding: 2.5rem; border: 2px solid #f1f5f9; text-align: center; transition: all 0.4s; position: relative; overflow: hidden; }
+    .pricing-card.featured { border-color: var(--primary); box-shadow: 0 20px 60px color-mix(in srgb, var(--primary) 20%, transparent); transform: scale(1.05); }
+    .pricing-badge { position: absolute; top: 1rem; right: -2rem; background: var(--primary); color: white; padding: 0.3rem 2.5rem; font-size: 0.75rem; font-weight: 700; transform: rotate(45deg); }
+    .pricing-price { font-size: 3rem; font-weight: 900; color: var(--text-dark); margin: 1rem 0; }
+    .pricing-period { font-size: 0.9rem; color: #64748b; font-weight: 600; }
+    .pricing-features { list-style: none; margin: 1.5rem 0; text-align: left; }
+    .pricing-features li { padding: 0.5rem 0; color: #475569; font-size: 0.95rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 0.5rem; }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features li::before { content: "✓"; color: var(--primary); font-weight: 900; flex-shrink: 0; }
+
+    /* Stats bar */
+    .stats-bar { background: var(--bg-dark); padding: 3rem 2rem; }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+
+    /* Mobile menu */
+    .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text-dark); margin: 6px 0; transition: all 0.3s; }
+    @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .mobile-toggle { display: block; }
+        .stats-inner { grid-template-columns: repeat(2, 1fr); }
+        .footer-grid { grid-template-columns: 1fr; }
+        .pricing-card.featured { transform: scale(1); }
+        .floating-btns { bottom: 1rem; right: 1rem; }
+    }
+    
+
+    .hero-section { position: relative; }
+    @media (max-width: 768px) {
+        .hero-section { padding: 7rem 1rem 3rem !important; }
+        .grid-2 { grid-template-columns: 1fr !important; }
+        .contact-form { padding: 1.5rem !important; }
+    }
+    
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">💪 GYM @ 365 DAYS</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="nav-cta">Book Now</a></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+
+    <section class="hero-section" style="background: linear-gradient(135deg, #052e16 0%, #166534 50%, #22c55e 100%); min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 8rem 2rem 4rem; text-align: center; color: white;">
+        <!-- Animated background particles -->
+        <div class="hero-particles">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="container" style="position: relative; z-index: 2; max-width: 800px; margin: 0 auto;">
+            <div class="hero-icon reveal" style="font-size: 5rem; margin-bottom: 1rem; animation: float-bounce 3s ease-in-out infinite;">💪</div>
+            <div class="trust-chip reveal reveal-delay-1" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 0.5rem 1.5rem; border-radius: 9999px; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.3); font-weight: 700; font-size: 0.9rem;">
+                ⭐ 4.8 Rating  •  552 Happy Customers  •  Indore
+            </div>
+            <h1 class="hero-title reveal reveal-delay-1" style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05; margin-bottom: 1.5rem; color: white; text-shadow: 0 4px 30px rgba(0,0,0,0.2);">
+                Your Trusted Fitness Centre in Indore
+            </h1>
+            <p class="hero-sub reveal reveal-delay-2" style="font-size: 1.3rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2.5rem; color: rgba(255,255,255,0.9);">
+                GYM @ 365 DAYS — Your trusted partner for quality services in Indore. Book your consultation today.
+            </p>
+            <div class="hero-btns reveal reveal-delay-3" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#contact" class="btn btn-white">Book Free Consultation</a>
+                <a href="#services" class="btn btn-outline" style="color: white; border-color: rgba(255,255,255,0.5);">View Services</a>
+            </div>
+            <div style="margin-top: 2rem;"></div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.8rem; animation: float-bounce 2s infinite;">
+            ↓ Scroll to explore
+        </div>
+        <style>
+        .hero-particles span {
+            position: absolute; border-radius: 50%; background: rgba(255,255,255,0.08);
+            animation: particle-float linear infinite;
+        }
+        .hero-particles span:nth-child(1) { width: 300px; height: 300px; top: -100px; right: -100px; animation-duration: 25s; }
+        .hero-particles span:nth-child(2) { width: 200px; height: 200px; top: 40%; left: -60px; animation-duration: 20s; animation-delay: -5s; }
+        .hero-particles span:nth-child(3) { width: 150px; height: 150px; bottom: 20%; right: 20%; animation-duration: 18s; animation-delay: -10s; }
+        .hero-particles span:nth-child(4) { width: 100px; height: 100px; bottom: 10%; left: 30%; animation-duration: 22s; animation-delay: -3s; }
+        .hero-particles span:nth-child(5) { width: 80px; height: 80px; top: 30%; right: 20%; animation-duration: 15s; animation-delay: -8s; }
+        .hero-particles span:nth-child(6) { width: 120px; height: 120px; top: 60%; left: 10%; animation-duration: 28s; animation-delay: -12s; }
+        .hero-particles span:nth-child(7) { width: 60px; height: 60px; bottom: 30%; right: 10%; animation-duration: 16s; animation-delay: -6s; }
+        .hero-particles span:nth-child(8) { width: 200px; height: 200px; top: 10%; left: 20%; animation-duration: 30s; animation-delay: -15s; }
+        .hero-particles span:nth-child(9) { width: 90px; height: 90px; top: 70%; right: 40%; animation-duration: 19s; animation-delay: -9s; }
+        .hero-particles span:nth-child(10) { width: 140px; height: 140px; bottom: 5%; left: 50%; animation-duration: 24s; animation-delay: -4s; }
+        @keyframes particle-float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-60px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+        .scroll-indicator { animation: float-bounce 2s ease-in-out infinite; }
+        .trust-chip { backdrop-filter: blur(10px); background: rgba(255,255,255,0.12); }
+        </style>
+    </section>
+
+<!-- Stats Bar -->
+
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div><div class="counter" data-target="552" data-suffix="+">0</div><div class="counter-label">Happy Customers</div></div>
+            <div><div class="counter" data-target="20" data-suffix="+">0</div><div class="counter-label">Years Experience</div></div>
+            <div><div class="counter" data-target="50" data-suffix="+">0</div><div class="counter-label">Expert Team</div></div>
+            <div><div class="counter" data-target="99" data-suffix="%">0</div><div class="counter-label">Satisfaction Rate</div></div>
+        </div>
+    </div>
+
+<!-- Industry-Specific Unique Section (before common sections) -->
+
+    <section class="section" id="trainers" style="background: linear-gradient(135deg, #052e16 0%, #14532d 50%, #166534 100%); color: white;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="section-label reveal" style="color: #86efac; background: rgba(255,255,255,0.1);">💪 Expert Trainers</div>
+                <h2 class="section-title reveal reveal-delay-1" style="color: white;">Certified Fitness Experts</h2>
+                <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto; color: rgba(255,255,255,0.7);">Our trainers are certified professionals dedicated to your transformation</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem;">
+                <div class="reveal" style="background: rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; text-align: center; transition: all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='none'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #052e16, #166534); display: flex; align-items: center; justify-content: center; font-size: 5rem;">🏋️</div>
+                    <div style="padding: 1.5rem;">
+                        <h4 style="color: white; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.25rem;">Rohan Mehta</h4>
+                        <div style="color: var(--accent); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Strength & Conditioning</div>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">8 years exp | 500+ clients transformed</p>
+                        <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">NASM Certified</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Nutrition Coach</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">CrossFit L2</span>
+                        </div>
+                    </div>
+                </div><div class="reveal" style="background: rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; text-align: center; transition: all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='none'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #134e4a, #0d9488); display: flex; align-items: center; justify-content: center; font-size: 5rem;">🧘</div>
+                    <div style="padding: 1.5rem;">
+                        <h4 style="color: white; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.25rem;">Priya Sharma</h4>
+                        <div style="color: var(--accent); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Yoga & Mindfulness</div>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">10 years exp | Specialist in stress management</p>
+                        <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">RYT-500</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Meditation Guide</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Pre/Post Natal</span>
+                        </div>
+                    </div>
+                </div><div class="reveal" style="background: rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; text-align: center; transition: all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='none'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #1e3a5f, #1e40af); display: flex; align-items: center; justify-content: center; font-size: 5rem;">🏃</div>
+                    <div style="padding: 1.5rem;">
+                        <h4 style="color: white; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.25rem;">Amit Patel</h4>
+                        <div style="color: var(--accent); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Cardio & Weight Loss</div>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">6 years exp | Marathon runner & trainer</p>
+                        <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">ACE Certified</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Sports Coach</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">HIIT Specialist</span>
+                        </div>
+                    </div>
+                </div><div class="reveal" style="background: rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; text-align: center; transition: all 0.4s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='none'">
+                    <div style="height: 200px; background: linear-gradient(135deg, #9d174d, #db2777); display: flex; align-items: center; justify-content: center; font-size: 5rem;">💃</div>
+                    <div style="padding: 1.5rem;">
+                        <h4 style="color: white; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.25rem;">Sneha Kapoor</h4>
+                        <div style="color: var(--accent); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;">Dance Fitness</div>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1rem;">5 years exp | Choreographer & fitness trainer</p>
+                        <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+                            <span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Zumba Certified</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Bollywood Dance</span><span style="background: rgba(255,255,255,0.12); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600;">Group Fitness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Services -->
+
+    <section class="section" id="services" style="background: var(--bg-light);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="section-label reveal"><span>💪</span> Our Fitness Programs</div>
+                <h2 class="section-title reveal reveal-delay-1">What We Offer</h2>
+                <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto;">Comprehensive services tailored to your needs. Experience excellence in every visit.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card service-card reveal" style="padding: 2rem; text-align: center; border-radius: 20px; border: none; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏋️</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.5rem;">Personal Training</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6;">Premium personal training services delivered by our expert team with attention to detail.</p>
+                    <a href="#contact" style="display: inline-block; margin-top: 1rem; color: var(--primary); font-weight: 700; text-decoration: none; font-size: 0.9rem;">Learn more →</a>
+                </div>
+                <div class="card service-card reveal" style="padding: 2rem; text-align: center; border-radius: 20px; border: none; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧘</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.5rem;">Group Classes</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6;">Premium group classes services delivered by our expert team with attention to detail.</p>
+                    <a href="#contact" style="display: inline-block; margin-top: 1rem; color: var(--primary); font-weight: 700; text-decoration: none; font-size: 0.9rem;">Learn more →</a>
+                </div>
+                <div class="card service-card reveal" style="padding: 2rem; text-align: center; border-radius: 20px; border: none; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏃</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.5rem;">Cardio Zone</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6;">Premium cardio zone services delivered by our expert team with attention to detail.</p>
+                    <a href="#contact" style="display: inline-block; margin-top: 1rem; color: var(--primary); font-weight: 700; text-decoration: none; font-size: 0.9rem;">Learn more →</a>
+                </div>
+                <div class="card service-card reveal" style="padding: 2rem; text-align: center; border-radius: 20px; border: none; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">💪</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.5rem;">Strength Training</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6;">Premium strength training services delivered by our expert team with attention to detail.</p>
+                    <a href="#contact" style="display: inline-block; margin-top: 1rem; color: var(--primary); font-weight: 700; text-decoration: none; font-size: 0.9rem;">Learn more →</a>
+                </div>
+                <div class="card service-card reveal" style="padding: 2rem; text-align: center; border-radius: 20px; border: none; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🥗</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.5rem;">Yoga & Meditation</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6;">Premium yoga & meditation services delivered by our expert team with attention to detail.</p>
+                    <a href="#contact" style="display: inline-block; margin-top: 1rem; color: var(--primary); font-weight: 700; text-decoration: none; font-size: 0.9rem;">Learn more →</a>
+                </div>
+                <div class="card service-card reveal" style="padding: 2rem; text-align: center; border-radius: 20px; border: none; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.5rem;">Nutrition Plans</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; line-height: 1.6;">Premium nutrition plans services delivered by our expert team with attention to detail.</p>
+                    <a href="#contact" style="display: inline-block; margin-top: 1rem; color: var(--primary); font-weight: 700; text-decoration: none; font-size: 0.9rem;">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- About -->
+
+    <section class="section" id="about" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #f0fdf4 100%);">
+        <div class="container">
+            <div class="grid-2" style="align-items: center; gap: 4rem;">
+                <div class="reveal-left">
+                    <div class="section-label"><span>💪</span> About GYM @ 365 DAYS</div>
+                    <h2 class="section-title" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
+                        Trusted Excellence in Indore Since Day One
+                    </h2>
+                    <p style="color: #475569; line-height: 1.9; margin-bottom: 1.5rem; font-size: 1.05rem;">
+                        GYM @ 365 DAYS has been serving the Indore community with dedication and expertise. Our commitment to quality has earned us the trust of 552 happy customers with a 4.8 star rating.
+                    </p>
+                    <p style="color: #475569; line-height: 1.9; margin-bottom: 2rem; font-size: 1.05rem;">
+                        We combine modern techniques with personalized care to deliver exceptional results. Every client is family, and every project receives our full attention and expertise.
+                    </p>
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+                <div class="reveal-right" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="card" style="padding: 2rem; text-align: center; border: none;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">💪</div>
+                        <div class="counter" style="font-size: 3rem;" data-target="552" data-suffix="+">0</div>
+                        <div style="color: #64748b; font-weight: 600; font-size: 0.9rem;">Happy Clients</div>
+                    </div>
+                    <div class="card" style="padding: 2rem; text-align: center; border: none;">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">⭐</div>
+                        <div class="counter" style="font-size: 3rem;">4.8</div>
+                        <div style="color: #64748b; font-weight: 600; font-size: 0.9rem;">Star Rating</div>
+                    </div>
+                    <div class="card" style="padding: 2rem; text-align: center; grid-column: 1/-1; border: none; background: color-mix(in srgb, var(--primary) 8%, white);">
+                        <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
+                        <div style="font-size: 1.5rem; font-weight: 800; color: var(--text-dark);">Top Rated in Indore</div>
+                        <div style="color: #64748b; font-weight: 600; font-size: 0.9rem;">Recognised for Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Testimonials -->
+
+    <section class="section" id="testimonials" style="background: white;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="section-label reveal">💬 Testimonials</div>
+                <h2 class="section-title reveal reveal-delay-1">What Our Clients Say</h2>
+                <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto;">Real feedback from real people we've served</p>
+            </div>
+            <div class="grid-3">
+                <div class="testimonial-card reveal" style="transition-delay: 0.0s">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Lost 15 kg in 4 months with their personal training program. Incredible results!"</p>
+                    <div class="testimonial-author">— Rahul S.</div>
+                </div>
+                <div class="testimonial-card reveal" style="transition-delay: 0.15s">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Group yoga classes are amazing. The instructors are certified and very patient."</p>
+                    <div class="testimonial-author">— Divya M.</div>
+                </div>
+                <div class="testimonial-card reveal" style="transition-delay: 0.3s">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Best gym equipment I've seen. Clean, modern, and motivating environment."</p>
+                    <div class="testimonial-author">— Aditya K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Pricing (3-tier industry-specific plans) -->
+
+    <section class="section" id="pricing" style="background: var(--bg-light);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="section-label reveal">💰 Pricing Plans</div>
+                <h2 class="section-title reveal reveal-delay-1">Transparent Pricing</h2>
+                <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto;">Choose the plan that fits your needs. No hidden charges ever.</p>
+            </div>
+            <div class="grid-3">
+                <div class="pricing-card ">
+                    
+                    <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">Starter</div>
+                    <div class="pricing-price" style="display: flex; align-items: baseline; gap: 0.25rem; justify-content: center;">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">₹999</span>
+                        <span style="font-size: 1rem; font-weight: 400; color: #64748b;">/ month</span>
+                    </div>
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0.75rem 0;">Get moving today</p>
+                    <ul class="pricing-features"><li>Gym Access (all hours)</li><li>Locker</li><li>Basic Cardio Zone</li><li>Free Trial (3 days)</li><li>Nutrition Guide</li></ul>
+                    <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">POPULAR</div>
+                    <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">Pro Athlete</div>
+                    <div class="pricing-price" style="display: flex; align-items: baseline; gap: 0.25rem; justify-content: center;">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">₹2,999</span>
+                        <span style="font-size: 1rem; font-weight: 400; color: #64748b;">/ month</span>
+                    </div>
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0.75rem 0;">Train with the best</p>
+                    <ul class="pricing-features"><li>Everything in Starter</li><li>Unlimited Group Classes</li><li>Personal Trainer (2/wk)</li><li>Sauna Access</li><li>Body Composition Analysis</li></ul>
+                    <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+                <div class="pricing-card ">
+                    
+                    <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">Champions</div>
+                    <div class="pricing-price" style="display: flex; align-items: baseline; gap: 0.25rem; justify-content: center;">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">₹5,999</span>
+                        <span style="font-size: 1rem; font-weight: 400; color: #64748b;">/ month</span>
+                    </div>
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 0.75rem 0;">Ultimate fitness experience</p>
+                    <ul class="pricing-features"><li>Everything in Pro</li><li>Unlimited PT Sessions</li><li>Custom Meal Plans</li><li>Monthly Health Report</li><li>Guest Passes (4)</li></ul>
+                    <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- FAQ -->
+
+    <section class="section" id="faq" style="background: var(--bg-light);">
+        <div class="container" style="max-width: 800px;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="section-label reveal">❓ FAQ</div>
+                <h2 class="section-title reveal reveal-delay-1">Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-item reveal">
+                <button class="faq-q">
+                    <span>Can I try before joining?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">Yes! We offer a free 3-day trial. Experience our trainers, equipment, and classes firsthand.</div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-q">
+                    <span>Are personal trainers available?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">Certified personal trainers are available for one-on-one and small group sessions.</div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-q">
+                    <span>Is there a joining fee?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-a">No hidden charges. Only monthly/quarterly membership fee. Zero joining fee this month!</div>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact -->
+
+    <section class="section" id="contact" style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #f0fdf4 100%);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <div class="section-label reveal">📞 Get in Touch</div>
+                <h2 class="section-title reveal reveal-delay-1">Ready to Get Started?</h2>
+                <p class="section-subtitle reveal reveal-delay-2" style="margin: 0 auto;">Fill the form below and we'll get back to you within 30 minutes</p>
+            </div>
+            <div class="grid-2" style="gap: 3rem; align-items: start;">
+                <div class="contact-form reveal-left">
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; color: var(--text-dark);">📩 Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="Your mobile number" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Service Required</label>
+                            <select>
+                                <option>Select a service</option>
+                                <option>General Inquiry</option>
+                                <option>Book Appointment</option>
+                                <option>Get Quote</option>
+                                <option>Complaint / Feedback</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 1.1rem;">Book Free Consultation</button>
+                    </form>
+                </div>
+                <div class="reveal-right">
+                    <div style="background: white; border-radius: 24px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+                        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-dark);">📍 Visit Us</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="font-size: 1.3rem;">📍</span>
+                                <div><strong style="color: var(--text-dark);">Address</strong><br><span style="color: #475569;">GYM @ 365 DAYS, Indore</span></div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="font-size: 1.3rem;">📞</span>
+                                <div><strong style="color: var(--text-dark);">Phone</strong><br><a href="tel: 086022 92599" style="color: var(--primary); text-decoration: none; font-weight: 600;"> 086022 92599</a></div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="font-size: 1.3rem;">🕐</span>
+                                <div><strong style="color: var(--text-dark);">Hours</strong><br><span style="color: #475569;">Mon–Sat: 9 AM – 8 PM<br>Sunday: 10 AM – 4 PM</span></div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <span style="font-size: 1.3rem;">✉️</span>
+                                <div><strong style="color: var(--text-dark);">Email</strong><br><a href="mailto:info@gym-365-days.com" style="color: var(--primary); text-decoration: none;">info@gym-365-days.com</a></div>
+                            </div>
+                        </div>
+                        <a href="tel:8602292599" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 1.5rem;">📞 Call Right Now</a>
+                    </div>
+                    <!-- Google Maps embed -->
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d0!3d0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAwJzAwLjAiTiA4wrAwMCcwMC4wIkU!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin&q=GYM @ 365 DAYS, Indore" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="GYM @ 365 DAYS Location"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">💪 GYM @ 365 DAYS</div>
+                    <p class="footer-desc">Your trusted fitness centre in Indore. Serving with excellence and dedication since day one. Premium quality services at affordable prices.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">f</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Contact Info</div>
+                    <ul class="footer-links">
+                        <li>📍 GYM @ 365 DAYS, Indore</li>
+                        <li>📞 <a href="tel: 086022 92599"> 086022 92599</a></li>
+                        <li>🕐 Mon–Sat: 9AM–8PM</li>
+                        <li>🕐 Sunday: 10AM–4PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© GYM @ 365 DAYS 2026. All rights reserved. | Built with 💜 by SiteSeeker | Indore</p>
+            </div>
+        </div>
+    </footer>
+
+<!-- Floating action buttons -->
+
+    <div class="floating-btns">
+        <a href="https://wa.me/918602292599?text=Hi, I would like to book an appointment." class="float-btn float-whatsapp" target="_blank" rel="noopener">
+            💬 WhatsApp
+        </a>
+        <a href="tel:8602292599" class="float-btn float-call">
+            📞 Call Now
+        </a>
+    </div>
+
+<!-- JavaScript -->
+<script>
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => revealObserver.observe(el));
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.navbar');
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    });
+
+    // Counter animation
+    function animateCounters() {
+        document.querySelectorAll('.counter').forEach(el => {
+            const target = parseInt(el.dataset.target || el.textContent.replace(/\D/g,'') || '0');
+            const suffix = el.dataset.suffix || '';
+            const prefix = el.dataset.prefix || '';
+            let current = 0;
+            const step = target / 60;
+            const timer = setInterval(() => {
+                current = Math.min(current + step, target);
+                el.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+                if (current >= target) clearInterval(timer);
+            }, 16);
+        });
+    }
+    const counterObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { animateCounters(); counterObs.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stats-bar').forEach(el => counterObs.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!wasOpen) item.classList.add('open');
+        });
+    });
+
+    // Mobile menu
+    document.querySelectorAll('.mobile-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.nav-links').forEach(n => {
+                n.style.display = n.style.display === 'flex' ? 'none' : 'flex';
+                n.style.flexDirection = 'column';
+                n.style.position = 'fixed';
+                n.style.top = '70px';
+                n.style.left = '0';
+                n.style.right = '0';
+                n.style.background = 'white';
+                n.style.padding = '1.5rem';
+                n.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                n.style.borderRadius = '0 0 16px 16px';
+            });
+        });
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+
+    // Form submission
+    document.querySelectorAll('form').forEach(f => {
+        f.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = f.querySelector('button[type=submit]') || f.querySelector('.btn');
+            if (btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+            setTimeout(() => {
+                if (btn) { btn.textContent = '✓ Sent Successfully!'; btn.style.background = '#22c55e'; }
+                setTimeout(() => {
+                    if (btn) { btn.textContent = 'Book Free Consultation'; btn.style.background = ''; btn.disabled = false; }
+                }, 3000);
+            }, 1500);
+        });
+    });
+    
+</script>
+</body>
+</html>
